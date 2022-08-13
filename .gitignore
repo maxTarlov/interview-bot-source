@@ -1,0 +1,7 @@
+# python byte-code
+__pycache__/
+*.py[cod]
+
+# generated in setup scripts
+./requirements.txt
+./deployment/resources
