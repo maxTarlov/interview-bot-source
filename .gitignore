@@ -4,4 +4,4 @@ __pycache__/
 
 # generated in setup scripts
 .venv
-deployment/resources
+deployable/resources
