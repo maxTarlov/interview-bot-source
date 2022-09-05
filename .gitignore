@@ -4,4 +4,4 @@ __pycache__/
 
 # generated in setup scripts
 .venv
-deployable/resources
+bot_function/resources
