@@ -1,10 +1,11 @@
 #!bin/bash
 
+DIR="${0%/*}"
+
 # create virtual environment for project
-python3 -m venv ".venv"
-source .venv/bin/activate
+python3 -m venv "$DIR/.venv"
+source $DIR/.venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r $DIR/requirements.txt
 
-chmod u=rwx bot_function/setup.sh
-./bot_function/setup.sh
+$DIR/bot_function/setup.sh

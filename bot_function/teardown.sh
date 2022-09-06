@@ -1,3 +1,5 @@
 #!bin/bash
 
-rm -r source/resources
+DIR="${0%/*}"
+
+rm -r $DIR/source/resources

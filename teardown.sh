@@ -1,5 +1,6 @@
 #!bin/bash
 
-rm -r .venv
+DIR="${0%/*}"
 
-./bot_function/teardown.sh
+rm -r $DIR/.venv
+$DIR/bot_function/teardown.sh
