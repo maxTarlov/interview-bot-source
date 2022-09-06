@@ -3,6 +3,8 @@ DIR="${0%/*}"
 
 source $DIR/../.venv/bin/activate
 
+pip install -r $DIR/requirements.txt
+
 mkdir $DIR/source/resources
 wget --output-document $DIR/source/resources/answers.json\
   https://raw.githubusercontent.com/maxTarlov/interview-bot-data/main/answers.json
