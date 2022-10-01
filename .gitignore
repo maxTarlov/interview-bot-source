@@ -2,6 +2,4 @@
 __pycache__/
 *.py[cod]
 
-# generated in setup scripts
 .venv
-bot_function/source/resources
