@@ -13,3 +13,12 @@ There are three main directories in this repository: `cloud_function`, which is 
 ### The `cloud_function` directory
 
 As the name suggests, this directory is meant to be deployed as a serverless cloud function. Once deployed to the cloud, the software in this directory will accept users' questions and respond with appropriate answers. `matcher.py` contains the code for matching users' questions to pre-written answers, while `main.py` provides the main http interface. The `models` directory contains a cache of the light-weight language model used in the matcher.
+
+## Roadmap
+
+- [ ] Write `setup.sh`
+- [ ] Copy over data repository
+- [ ] Make demo version of cloud-function
+- [ ] Write `deploy_cloud_function.sh`
+- [ ] Finalize notebook
+- [ ] Bring notebook into open source repo
