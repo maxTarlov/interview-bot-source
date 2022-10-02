@@ -1,0 +1,4 @@
+wheel
+functions_framework
+google-cloud-firestore
+sentence_transformers
