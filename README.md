@@ -4,19 +4,19 @@ This open source repository serves as a companion to my interview bot, which ans
 
 ## Getting started
 
-If you have just downloaded this repository on your desktop or laptop, use the command line to navigate to the `interview-bot-source` directory and run `source setup.sh`. This will create and activate a python virtual environment and install the necessary dependencies for you to run and test the code on your machine.
+If you have just downloaded this repository on your desktop or laptop, use the bash shell to run `source setup.sh`. This will create and activate a python virtual environment and install the necessary dependencies for you to run and test the code on your machine.
 
 ## Structure of this repository
 
-There are three main directories in this repository: `cloud_function`, which is the back-end for the interview bot demo site, `data`, which is the data used to create the interview bot's model, and `notebooks`, which contains versions of my notebooks that contain only the open source code.
+There are three main directories in this repository: `cloud_function`, which is the back-end for the interview bot demo site `data`, which is the data used to create the interview bot's model, and `notebooks`, which contains versions of my notebooks that contain only the open source code.
 
 ### The `cloud_function` directory
 
-As the name suggests, this directory is meant to be deployed as a serverless cloud function. Once deployed to the cloud, the software in this directory will accept users' questions and respond with appropriate answers. `matcher.py` contains the code for matching users' questions to pre-written answers, while `main.py` provides the main http interface. The `models` directory contains a cache of the light-weight language model used in the matcher.
+As the name suggests, this directory is meant to be deployed as a serverless cloud function. Once deployed to the cloud, the software in this directory will accept users' questions and respond with appropriate answers. `matcher.py` contains the code for matching users' questions to pre-written answers, while `main.py` provides the main http interface.
 
 ## Roadmap
 
-- [ ] Write `setup.sh`
+- [x] Write `setup.sh`
 - [ ] Copy over data repository
 - [ ] Make demo version of cloud-function
 - [ ] Write `deploy_cloud_function.sh`
