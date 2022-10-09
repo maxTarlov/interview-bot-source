@@ -8,11 +8,19 @@ import pickle
 REPO_ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
 CLOUD_FUNCTION_DATA_DIR = os.path.join(REPO_ROOT_DIR, 'cloud_function', 'data')
 
-MODEL_NAME = 'all-MiniLM-L6-v2'
 
 def main():
     print('Downloading and caching lanuage model...')
-    model = SentenceTransformer(MODEL_NAME, cache_folder=os.path.join(CLOUD_FUNCTION_DATA_DIR, 'encoder'))
+    with open(os.path.join(CLOUD_FUNCTION_DATA_DIR, 'config.json'), 'r') as config_file:
+        config = json.load(config_file)
+    assert config['using sentence_transformers']  # this code assumes you are using sentence_transformers
+    model = SentenceTransformer(config['model name'], cache_folder=CLOUD_FUNCTION_DATA_DIR)
+    model_folder = '_'.join(['sentence-transformers', config['model name']])
+    assert os.path.isdir(os.path.join(CLOUD_FUNCTION_DATA_DIR, model_folder))
+    config['model folder'] = model_folder
+    with open(os.path.join(CLOUD_FUNCTION_DATA_DIR, 'config.json'), 'w') as config_file:
+        json.dump(config, config_file)
+
 
     print('Precomputing encodings for golden questions...')
     with open(os.path.join(CLOUD_FUNCTION_DATA_DIR, 'answers.json'), 'r') as answers_file:
