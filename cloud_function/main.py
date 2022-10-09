@@ -53,4 +53,4 @@ def route_requests(request):
         }
         return ('', 204, headers)
     else:
-        return handle_get()
+        return handle_get(request)
