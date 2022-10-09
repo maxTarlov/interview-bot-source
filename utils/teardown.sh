@@ -5,3 +5,5 @@ if [[ $(which python) == "$INTERVIEW_BOT_SOURCE_DIR/.venv/bin/python" ]]; then
 fi
 
 rm -r $INTERVIEW_BOT_SOURCE_DIR/.venv
+
+rm -r $INTERVIEW_BOT_SOURCE_DIR/cloud_function/data
