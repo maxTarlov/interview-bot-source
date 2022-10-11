@@ -16,7 +16,7 @@ As the name suggests, this directory is meant to be deployed as a serverless clo
 
 ### The `data` directory
 
-This directory contains three files. `questions.tsv` enumerates each interview questions I used for training and the webpage I scraped it from. `sources.tsv` lists 99 webpages and whether their contents have already been scraped and added to `questions.tsv`. `answers.json` maps example interview questions to pre-written answers. `cloud_function/matcher.py` finds which question in `answers.json` is most similar to a user-submitted question and returns the answer corresponding to the most similar example question.
+This directory contains three files. First, `questions.tsv` enumerates each interview questions I used for training and the webpage I scraped it from. Next, `sources.tsv` lists 99 webpages and whether their contents have already been scraped and added to `questions.tsv`. Finally, `answers.json` maps example interview questions to pre-written answers. `cloud_function/matcher.py` finds which question in `answers.json` is most similar to a user-submitted question and returns the answer corresponding to the most similar example question.
 
 ## Roadmap
 
