@@ -13,6 +13,6 @@ if [ ! -d "$INTERVIEW_BOT_SOURCE_DIR/cloud-function/data" ]; then
     mkdir $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data
 fi
 
-$INTERVIEW_BOT_SOURCE_DIR/utils/refresh_cloud-function_data.sh
+$INTERVIEW_BOT_SOURCE_DIR/utils/refresh_cloud_function_data.sh
 
 echo "Done."
