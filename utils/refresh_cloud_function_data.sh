@@ -7,9 +7,9 @@ INTERVIEW_BOT_SOURCE_LINK=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev
 # Linux requires readlink -f, OSX requires that there be no options smh
 INTERVIEW_BOT_SOURCE_DIR=$( readlink -f $INTERVIEW_BOT_SOURCE_LINK || readlink $INTERVIEW_BOT_SOURCE_LINK )
 
-echo "Copying answers to cloud_function/data..."
+echo "Copying answers to cloud-function/data..."
 
-cp $INTERVIEW_BOT_SOURCE_DIR/data/answers.json $INTERVIEW_BOT_SOURCE_DIR/cloud_function/data/answers.json
-cp $INTERVIEW_BOT_SOURCE_DIR/data/config.json $INTERVIEW_BOT_SOURCE_DIR/cloud_function/data/config.json
+cp $INTERVIEW_BOT_SOURCE_DIR/data/answers.json $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data/answers.json
+cp $INTERVIEW_BOT_SOURCE_DIR/data/config.json $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data/config.json
 
-python $INTERVIEW_BOT_SOURCE_DIR/utils/setup_cloud_function.py
+python $INTERVIEW_BOT_SOURCE_DIR/utils/setup_cloud-function.py

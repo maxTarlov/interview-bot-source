@@ -13,15 +13,15 @@ If you wish to deploy the chatbot as a Google Cloud Function, you can follow [th
 
 ## Structure of this repository
 
-There are three main directories in this repository: `cloud_function`, which is the back-end for the interview bot demo site `data`, which is the data used to create the interview bot, and `notebooks`, which contains versions of my notebooks that contain only the open source code. There is also a `utils` directory which contains some useful scripts.
+There are three main directories in this repository: `cloud-function`, which is the back-end for the interview bot demo site `data`, which is the data used to create the interview bot, and `notebooks`, which contains versions of my notebooks that contain only the open source code. There is also a `utils` directory which contains some useful scripts.
 
-### The `cloud_function` directory
+### The `cloud-function` directory
 
-As the name suggests, this directory is meant to be deployed as a serverless cloud function. Once deployed to the cloud, the software in this directory will accept users' questions and respond with appropriate answers. `matcher.py` contains the code for matching users' questions to pre-written answers, while `main.py` provides the main http interface. The `cloud_function/data` contains the data needed in production for the cloud function to work and is copied over from the main `data` directory.
+As the name suggests, this directory is meant to be deployed as a serverless cloud function. Once deployed to the cloud, the software in this directory will accept users' questions and respond with appropriate answers. `matcher.py` contains the code for matching users' questions to pre-written answers, while `main.py` provides the main http interface. The `cloud-function/data` contains the data needed in production for the cloud function to work and is copied over from the main `data` directory.
 
 ### The `data` directory
 
-In this directory, `questions.tsv` contains the entire corpus of interview questions I used for creating the chatbot, while `answers.jon` contains a smaller mapping of "golden" interview questions to pre-written answers. The answers are coppied to `cloud_function/data`. From there, `cloud_function/matcher.py` finds which question in `answers.json` is most similar to a user-submitted question and returns the answer corresponding to the most similar example question.
+In this directory, `questions.tsv` contains the entire corpus of interview questions I used for creating the chatbot, while `answers.jon` contains a smaller mapping of "golden" interview questions to pre-written answers. The answers are coppied to `cloud-function/data`. From there, `cloud-function/matcher.py` finds which question in `answers.json` is most similar to a user-submitted question and returns the answer corresponding to the most similar example question.
 
 ## Roadmap
 

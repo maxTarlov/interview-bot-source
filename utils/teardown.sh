@@ -12,4 +12,4 @@ fi
 
 rm -r $INTERVIEW_BOT_SOURCE_DIR/.venv
 
-rm -r $INTERVIEW_BOT_SOURCE_DIR/cloud_function/data
+rm -r $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data

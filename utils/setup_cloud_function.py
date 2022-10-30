@@ -1,4 +1,4 @@
-"""Download and cache language model and precompute encodings for golden questions  """
+"""Download and cache language model and precompute encodings for golden questions"""
 
 import os
 from sentence_transformers import SentenceTransformer
@@ -6,7 +6,7 @@ import json
 import pickle
 
 REPO_ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
-CLOUD_FUNCTION_DATA_DIR = os.path.join(REPO_ROOT_DIR, 'cloud_function', 'data')
+CLOUD_FUNCTION_DATA_DIR = os.path.join(REPO_ROOT_DIR, 'cloud-function', 'data')
 
 
 def main():

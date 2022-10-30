@@ -4,4 +4,4 @@ __pycache__/
 
 .venv
 
-cloud_function/data
+cloud-function/data
