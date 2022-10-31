@@ -12,4 +12,4 @@ echo "Copying answers to cloud-function/data..."
 cp $INTERVIEW_BOT_SOURCE_DIR/data/answers.json $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data/answers.json
 cp $INTERVIEW_BOT_SOURCE_DIR/data/config.json $INTERVIEW_BOT_SOURCE_DIR/cloud-function/data/config.json
 
-python $INTERVIEW_BOT_SOURCE_DIR/utils/setup_cloud-function.py
+python $INTERVIEW_BOT_SOURCE_DIR/utils/setup_cloud_function.py
