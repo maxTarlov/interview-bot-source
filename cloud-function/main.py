@@ -1,7 +1,11 @@
 import matcher
 import functions_framework
 
-ALLOW_METHODS = 'GET'
+from google.cloud import firestore
+db = firestore.Client()
+question_logs = db.collection(u'question-logs')
+
+ALLOW_METHODS = 'OPTIONS, GET'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
@@ -14,6 +18,7 @@ def handle_get(request):
     are logged in GCP Firestore and the unique key for that log is returned along with
     the user's question and the answer to that question.
     """
+
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
@@ -24,13 +29,21 @@ def handle_get(request):
         answer = matcher.get_best_match(question)
         body = {
             'user-question': question,
-            'bot-answer': answer
+            'bot-answer': answer,
+            'default': False,
+            'timestamp': firestore.SERVER_TIMESTAMP
         }
     else:
         body = {
             'user-question': DEFAULT_QUESTION,
-            'bot-answer': DEFAULT_ANSWER
+            'bot-answer': DEFAULT_ANSWER,
+            'default': True,
+            'timestamp': firestore.SERVER_TIMESTAMP
         }
+
+    _, log_ref = question_logs.add(body)
+    del(body['timestamp'])  # not JSON serializable
+    body['id'] = log_ref.id  # send unique id for feedback
     return body, 200, headers
 
 @functions_framework.http
