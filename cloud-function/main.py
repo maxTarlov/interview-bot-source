@@ -14,9 +14,7 @@ def handle_get(request):
     """
     GET requests are to ask the bot an interview question. If there is an argument "q"
     in the url, use the matcher.get_best_match function to serve the best response. If
-    there is no argument "q" in the url, return the default answer. All GET requests
-    are logged in GCP Firestore and the unique key for that log is returned along with
-    the user's question and the answer to that question.
+    there is no argument "q" in the url, return the default answer.
     """
     headers = {
         'Access-Control-Allow-Origin': '*',
