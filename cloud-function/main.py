@@ -74,7 +74,7 @@ def route_requests(request):
     # Set CORS headers for the preflight request
     if request.method == 'OPTIONS':
         headers = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'maxtarlov.github.io',
         'Access-Control-Allow-Methods': ALLOW_METHODS,
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400'
