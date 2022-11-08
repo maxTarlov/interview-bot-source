@@ -7,6 +7,7 @@ question_logs = db.collection('question-logs')
 user_feedback = db.collection('user-feedback')
 
 ALLOW_METHODS = 'OPTIONS, GET, POST'
+ALLOW_ORIGIN = 'https://maxtarlov.github.io'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
@@ -21,7 +22,7 @@ def handle_get(request):
     """
 
     headers = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': ALLOW_ORIGIN,
         'Content-Type': 'application/json'
     }
 
@@ -53,7 +54,7 @@ def handle_post(request):
     Expect a firestore document ID which corresponds to the ID of the question log.
     """
 
-    headers = {'Access-Control-Allow-Origin': '*'}
+    headers = {'Access-Control-Allow-Origin': ALLOW_ORIGIN}
     try:
         request_json = request.get_json()
     except Exception as inst:
@@ -74,7 +75,7 @@ def route_requests(request):
     # Set CORS headers for the preflight request
     if request.method == 'OPTIONS':
         headers = {
-        'Access-Control-Allow-Origin': 'maxtarlov.github.io',
+        'Access-Control-Allow-Origin': ALLOW_ORIGIN,
         'Access-Control-Allow-Methods': ALLOW_METHODS,
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400'
