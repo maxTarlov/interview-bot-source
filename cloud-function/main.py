@@ -1,10 +1,6 @@
 import matcher
 import functions_framework
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 ALLOW_METHODS = 'GET'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
@@ -29,7 +25,6 @@ def handle_get(request):
             'bot-answer': answer
         }
     else:
-        log_id = 42
         body = {
             'user-question': DEFAULT_QUESTION,
             'bot-answer': DEFAULT_ANSWER
