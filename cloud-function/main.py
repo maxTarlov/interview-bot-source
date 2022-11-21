@@ -1,5 +1,8 @@
 import matcher
 import functions_framework
+import json
+import os
+from random import sample
 
 from google.cloud import firestore
 db = firestore.Client()
@@ -11,6 +14,9 @@ ALLOW_ORIGIN = 'https://maxtarlov.github.io'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
+
+with open(os.path.join(matcher.DATA_DIR, 'suggestions.json'), 'r') as suggestions:
+    SUGGESTED_QUESTIONS = json.load(suggestions)
 
 def handle_get(request):
     """
@@ -46,6 +52,7 @@ def handle_get(request):
     _, log_ref = question_logs.add(body)
     del(body['timestamp'])  # not JSON serializable
     body['id'] = log_ref.id  # send unique id for feedback
+    body['suggestions'] = sample(SUGGESTED_QUESTIONS, 3)
     return body, 200, headers
 
 def handle_post(request):
