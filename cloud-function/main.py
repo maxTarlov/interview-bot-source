@@ -1,10 +1,16 @@
 import matcher
 import functions_framework
+import json
+import os
+from random import sample
 
 ALLOW_METHODS = 'GET'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
+
+with open(os.path.join(matcher.DATA_DIR, 'suggestions.json'), 'r') as suggestions:
+    SUGGESTED_QUESTIONS = json.load(suggestions)
 
 def handle_get(request):
     """
@@ -29,6 +35,7 @@ def handle_get(request):
             'user-question': DEFAULT_QUESTION,
             'bot-answer': DEFAULT_ANSWER
         }
+    body['suggestions'] = sample(SUGGESTED_QUESTIONS, 3)
     return body, 200, headers
 
 @functions_framework.http
