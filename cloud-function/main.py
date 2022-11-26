@@ -10,7 +10,7 @@ question_logs = db.collection('question-logs')
 user_feedback = db.collection('user-feedback')
 
 ALLOW_METHODS = 'OPTIONS, GET, POST'
-ALLOW_ORIGIN = 'https://maxtarlov.github.io'
+ALLOW_ORIGIN = 'maxtarlov.github.io, interview.tarlov.dev'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
