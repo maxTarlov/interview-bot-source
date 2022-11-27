@@ -6,11 +6,10 @@ from random import sample
 
 from google.cloud import firestore
 db = firestore.Client()
-question_logs = db.collection('question-logs')
-user_feedback = db.collection('user-feedback')
+question_logs = db.collection('v2-question-logs')
 
 ALLOW_METHODS = 'OPTIONS, GET, POST'
-ALLOW_ORIGIN = 'maxtarlov.github.io, interview.tarlov.dev'
+ALLOW_ORIGIN = 'interview.tarlov.dev'
 
 DEFAULT_QUESTION = 'Tell me about yourself.'
 DEFAULT_ANSWER = matcher.question_answer_mappings[DEFAULT_QUESTION]
@@ -36,16 +35,16 @@ def handle_get(request):
         question = request.args['q']
         answer = matcher.get_best_match(question)
         body = {
-            'user-question': question,
-            'bot-answer': answer,
-            'default': False,
+            'user_question': question,
+            'bot_answer': answer,
+            'default_question': False,
             'timestamp': firestore.SERVER_TIMESTAMP
         }
     else:
         body = {
-            'user-question': DEFAULT_QUESTION,
-            'bot-answer': DEFAULT_ANSWER,
-            'default': True,
+            'user_question': DEFAULT_QUESTION,
+            'bot_answer': DEFAULT_ANSWER,
+            'default_question': True,
             'timestamp': firestore.SERVER_TIMESTAMP
         }
 
@@ -67,8 +66,11 @@ def handle_post(request):
     except Exception as inst:
         return inst.description, 400, headers
     if 'id' in request_json and 'good' in request_json:
-        user_feedback.document(str(request_json['id']))\
-            .set({'good': request_json['good']})
+        question_logs.document(str(request_json['id']))\
+            .update({
+                u'feedback_positive': bool(request_json['good']),
+                u'feedback_timestamp': firestore.SERVER_TIMESTAMP
+                })
         return '', 204, headers
     else:
         return 'Expected keys "id" and "good" in JSON', 400, headers
